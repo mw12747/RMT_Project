@@ -1,5 +1,5 @@
 from RMTstats import random_geometric_graph, ray_conn_fun, hard_conn_fun, AdjSpectrum
-import pandas as pd
+import json
 import os
 from pathlib import Path
 from scipy.special import gamma, gammainc
@@ -8,13 +8,27 @@ from sys import platform
 
 
 def run_sims_hard(rad, rate, dim, n_runs):
-    if platform == 'darwin':
-        fname = '/Users/michaelwilsher/PycharmProjects/1DSoftRGG/RMT_Project/SimulatedData/HardRGG/Dim_%s/rate_%s/rad_%s/eta_inf.csv'\
-                % (dim, rate, rad)
 
-    if platform == 'win32':
-        fname = 'C:/Users/mw12747/OneDrive - University of Bristol/MyFiles-Migrated/Documents/PycharmProjects/' \
-                'RMT_Project/SimulatedData/HardRGG/Dim_%s/rate_%s/rad_%s/eta_inf.csv' % (dim, rate, rad)
+    n = 0
+    eig_list = []
+    print('rad = ', rad)
+
+    while n < n_runs:
+        if (n / n_runs * 100) % 10 == 0:
+            print(n / n_runs * 100, "% complete")
+        G, pos_nodes = random_geometric_graph(hard_conn_fun, rate=rate, dim=dim, torus=True, rad=rad)
+        eig_list.append(AdjSpectrum(G))
+        n += 1
+
+    rad_key = str(rad)
+
+    if platform == 'darwin':
+        fname = f'/Users/michaelwilsher/Documents/GitHub/RMT_Project/SimulatedData/HardRGG/' \
+                f'Dim_{dim}/rate_{rate}/eta_inf.txt'
+
+    elif platform == 'win32':
+        fname = f'C:/Users/mw12747/OneDrive - University of Bristol/MyFiles-Migrated/Documents/PycharmProjects/' \
+                'RMT_Project/SimulatedData/HardRGG/Dim_{dim}/rate_{rate}/eta_inf.txt'
 
     path = fname[:-12]
 
@@ -22,76 +36,43 @@ def run_sims_hard(rad, rate, dim, n_runs):
         os.makedirs(path)
 
     if os.path.isfile(fname):
-        df_old = pd.read_csv(fname, index_col=False)
-        data = {}
-        for key in df_old.keys():
-            data[key] = df_old[key].tolist()
+        with open(fname, "r") as my_file:
+            data = json.load(my_file)
+        with open(fname, "w") as my_file:
+            if rad_key in data:
+                data[rad_key] += eig_list
+            else:
+                data[rad_key] = eig_list
+            json.dump(data, my_file)
+
     else:
-        data = {}
+        with open(fname, "w") as my_file:
+            data = {rad_key: eig_list}
+            json.dump(data, my_file)
 
-    if platform == 'darwin':
-        fname_readme = '/Users/michaelwilsher/PycharmProjects/1DSoftRGG/RMT_Project/SimulatedData/HardRGG/' \
-                       'Dim_%s/rate_%s/rad_%s/readme.txt' % (dim, rate, rad)
 
-    if platform == 'win32':
-        fname_readme = 'C:/Users/mw12747/OneDrive - University of Bristol/MyFiles-Migrated/Documents/PycharmProjects/' \
-                       'RMT_Project/SimulatedData/HardRGG/Dim_%s/rate_%s/rad_%s/readme.txt' % (dim, rate, rad)
-
-    if not os.path.isfile(fname_readme):
-        Path(fname_readme).touch()
-        file = open(fname_readme, "w")
-        file.write("This folder contains the simulation data for a Hard RGG in Dimension = %s, Rate = %s, Radius = %s \n nsims = 0"
-                   % (dim, rate, rad))
-        nsims_old = 0
-    else:
-        file = open(fname_readme, "r")
-        for line in file.readlines():
-            if 'nsims' in line:
-                nsims_temp = line[8:]
-                nsims_old = float(nsims_temp)
-
+def run_sims_soft(rad, eta, rate, dim, n_runs):
 
     n = 0
     eig_list = []
     print('rad = ', rad)
 
     while n < n_runs:
-        nsims_new = nsims_old + n
         if (n / n_runs * 100) % 10 == 0:
             print(n / n_runs * 100, "% complete")
-        G, pos_nodes = random_geometric_graph(hard_conn_fun, rate=rate, dim=dim, torus=True, rad=rad)
-        eig_list = eig_list + AdjSpectrum(G)
+        H, pos_nodes = random_geometric_graph(ray_conn_fun, rate=rate, dim=dim, torus=True, rad=rad, eta=eta)
+        eig_list.append(AdjSpectrum(H))
         n += 1
 
     rad_key = str(rad)
 
-    if rad_key in data:
-        data[rad_key] = data[rad_key] + eig_list
-    else:
-        data[rad_key] = eig_list
-
-    df = pd.DataFrame(dict([(k, pd.Series(v)) for k, v in data.items()]))
-
-    if not os.path.exists(path):
-        os.makedirs(path)
-
-    df.to_csv(fname, index=False)
-
-    file = open(fname_readme, "w")
-    file.write("This folder contains the simulation data for a Hard RGG in Dimension = %s, Rate = %s, Radius = %s \n nsims = %s"
-               % (dim, rate, rad, nsims_new))
-
-
-def run_sims_soft(rad, eta, rate, dim, n_runs):
-    print(platform)
     if platform == 'darwin':
-        fname = '/Users/michaelwilsher/PycharmProjects/1DSoftRGG/RMT_Project/SimulatedData/SoftRGG/Dim_%s/rate_%s/rad_%s/eta_%s.csv'\
-            % (dim, rate, rad, eta)
+        fname = f'/Users/michaelwilsher/Documents/GitHub/RMT_Project/SimulatedData/SoftRGG/' \
+                f'Dim_{dim}/rate_{rate}/eta_{eta}.txt'
 
-    if platform == 'win32':
-        fname = 'C:/Users/mw12747/OneDrive - University of Bristol/MyFiles-Migrated/Documents/PycharmProjects/' \
-                'RMT_Project/SimulatedData/SoftRGG/Dim_%s/rate_%s/rad_%s/eta_%s.csv'\
-            % (dim, rate, rad, eta)
+    elif platform == 'win32':
+        fname = f'C:/Users/mw12747/OneDrive - University of Bristol/MyFiles-Migrated/Documents/PycharmProjects/' \
+                f'RMT_Project/SimulatedData/SoftRGG/Dim_{dim}/rate_{rate}/eta_{eta}.txt'
 
     path = fname[:-10]
 
@@ -99,69 +80,23 @@ def run_sims_soft(rad, eta, rate, dim, n_runs):
         os.makedirs(path)
 
     if os.path.isfile(fname):
-        df_old = pd.read_csv(fname, index_col=False)
-        data = {}
-        for key in df_old.keys():
-            data[key] = df_old[key].tolist()
+        with open(fname, "r") as my_file:
+            data = json.load(my_file)
+        with open(fname, "w") as my_file:
+            if rad_key in data:
+                data[rad_key] += eig_list
+            else:
+                data[rad_key] = eig_list
+            json.dump(data, my_file)
+
     else:
-        data = {}
-
-    if platform == 'darwin':
-        fname_readme = '/Users/michaelwilsher/PycharmProjects/1DSoftRGG/RMT_Project/SimulatedData/SoftRGG/' \
-                   'Dim_%s/rate_%s/rad_%s/readme_eta_%s.txt' % (dim, rate, rad, eta)
-
-    if platform == 'win32':
-        fname_readme = 'C:/Users/mw12747/OneDrive - University of Bristol/MyFiles-Migrated/Documents/PycharmProjects/' \
-                'RMT_Project/SimulatedData/SoftRGG/' \
-                   'Dim_%s/rate_%s/rad_%s/readme_eta_%s.txt' % (dim, rate, rad, eta)
-
-    if not os.path.isfile(fname_readme):
-        Path(fname_readme).touch()
-        file = open(fname_readme, "w")
-        file.write("This folder contains the simulation data for a Soft RGG in Dimension = %s, Rate = %s, Radius = %s, Eta = %s \n nsims = 0"
-                   % (dim, rate, rad, eta))
-        nsims_old = 0
-    else:
-        file = open(fname_readme, "r")
-        for line in file.readlines():
-            if 'nsims' in line:
-                nsims_temp = line[8:]
-                nsims_old = float(nsims_temp)
+        with open(fname, "w") as my_file:
+            data = {rad_key: eig_list}
+            json.dump(data, my_file)
 
 
-    n = 0
-    eig_list = []
-    print('rad = ', rad)
-
-    while n < n_runs:
-        nsims_new = nsims_old + n
-        if (n / n_runs * 100) % 10 == 0:
-            print(n / n_runs * 100, "% complete")
-        H, pos_nodes = random_geometric_graph(ray_conn_fun, rate=rate, dim=dim, torus=True, rad=rad, eta=eta)
-        eig_list = eig_list + AdjSpectrum(H)
-        n += 1
-
-    rad_key = str(rad)
-
-    if rad_key in data:
-        data[rad_key] = data[rad_key] + eig_list
-    else:
-        data[rad_key] = eig_list
-
-    df = pd.DataFrame(dict([(k, pd.Series(v)) for k, v in data.items()]))
-
-    if not os.path.exists(path):
-        os.makedirs(path)
-
-    df.to_csv(fname, index=False)
-
-    file = open(fname_readme, "w")
-    file.write("This folder contains the simulation data for a Soft RGG in Dimension = %s, Rate = %s, Radius = %s, Eta = %s \n nsims = %s"
-               % (dim, rate, rad, eta, nsims_new))
-
-
-def r_h(r_s, eta):
-    r_h = r_s / eta * (gamma(1 / eta) * gammainc(1 / eta, (2*r_s)**-eta))
+# def r_h(r_s, eta):
+#     r_h = r_s / eta * (gamma(1 / eta) * gammainc(1 / eta, (2*r_s)**-eta))
 
 
 def run_sims(n_runs, dim, mean_degree, rate):
@@ -174,5 +109,6 @@ def run_sims(n_runs, dim, mean_degree, rate):
         run_sims_soft(r_ray, 2, rate, dim, n_runs)
         run_sims_hard(r_hard, rate, dim, n_runs)
 
-run_sims(n_runs=100, dim=1, mean_degree=[6,7,8,9,10], rate=1e3)
+
+run_sims(n_runs=10, dim=1, mean_degree=[1], rate=1e3)
 
