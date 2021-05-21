@@ -1,9 +1,10 @@
 import json
 import matplotlib.pyplot as plt
 import numpy as np
+from math import sqrt, pi
 
 
-def plot_sims(hard, dim, rate, rad, eta=2):
+def plot_sims(hard, dim, rate, mean_degree, eta=2):
     if hard:
         fname = f'/Users/michaelwilsher/Documents/GitHub/RMT_Project/SimulatedData/HardRGG/' \
                 f'Dim_{dim}/rate_{rate}/eta_inf.txt'
@@ -16,6 +17,26 @@ def plot_sims(hard, dim, rate, rad, eta=2):
 
     bins = np.arange(-40.05, 40.05, 0.1)
 
+    if dim == 1:
+        if hard == True:
+            rad = mean_degree / (2 * rate)
+
+        else:
+            if eta == 1:
+                rad = mean_degree / (2 * rate)
+            else:
+                rad = mean_degree / (rate * sqrt(pi))
+
+    elif dim == 2:
+        if hard == True:
+            rad = sqrt(mean_degree / (pi * rate))
+
+        else:
+            if eta == 1:
+                rad = sqrt(mean_degree / (2 * pi * rate))
+            elif eta == 2:
+                rad = sqrt(mean_degree / (pi * rate))
+
     key = str(rad)
     n_sims = len(data[key])
     print('nsims = ', n_sims)
@@ -23,19 +44,22 @@ def plot_sims(hard, dim, rate, rad, eta=2):
 
     for i in range(n_sims):
         eig = eig + data[key][i]
-    # print(len(eig))
-    #
-    # plt.hist(eig, bins=bins, density=True, label='rad = %s' % key)
-    # if hard:
-    #     plt.title(f'Hard RGG for d = {dim}, rate = {rate}')
-    # else:
-    #     plt.title(f'Soft RGG for d = {dim}, rate = {rate}, $\eta$ = {eta}')
-    #
-    #
-    # plt.legend()
-    # plt.show()
+    print(len(eig))
+
+    plt.hist(eig, bins=bins, density=True, label=f'mean degree = {mean_degree}')
+    if hard:
+        plt.title(f'Hard RGG for d = {dim}, rate = {rate}')
+    else:
+        plt.title(f'Soft RGG for d = {dim}, rate = {rate}, $\eta$ = {eta}')
 
 
-plot_sims(True, 1, 30, 0.016666666666666666, 1)
-plot_sims(False, 1, 30, 0.01880631945159188, 2)
-plot_sims(False, 1, 30, 0.016666666666666666, 1)
+    plt.legend()
+    plt.show()
+
+
+rate = 1e3
+mean_degree = 4
+
+# plot_sims(hard=True, dim=1, rate=rate, mean_degree=mean_degree, eta=1)
+# plot_sims(hard=False, dim=1, rate=rate, mean_degree=mean_degree, eta=2)
+plot_sims(hard=False, dim=1, rate=rate, mean_degree=mean_degree, eta=1)

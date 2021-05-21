@@ -102,9 +102,15 @@ def run_sims_soft(rad, eta, rate, dim, n_runs):
 def run_sims(n_runs, dim, mean_degree, rate):
     for d in mean_degree:
         print('mean_degree = ', d)
-        r_wax = d / (2 * rate)
-        r_ray = d / (rate * sqrt(pi))
-        r_hard = d / (2 * rate)
+        if dim == 1:
+            r_wax = d / (2 * rate)
+            r_ray = d / (rate * sqrt(pi))
+            r_hard = d / (2 * rate)
+        elif dim == 2:
+            r_wax = sqrt(d / (2 * pi * rate))
+            r_ray = sqrt(d / (pi * rate))
+            r_hard = sqrt(d / (pi * rate))
+
         run_sims_soft(r_wax, 1, rate, dim, n_runs)
         run_sims_soft(r_ray, 2, rate, dim, n_runs)
         run_sims_hard(r_hard, rate, dim, n_runs)

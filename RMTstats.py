@@ -18,20 +18,11 @@ Here we calculate spectral statistics of RGGs
 Import the necessary packages
 """
 
-import math, random
+import random
 import networkx as nx
-import matplotlib.pyplot as plt
 import numpy as np
-import time
-import platform
 from scipy.spatial import distance
 import scipy as sp
-import scipy.stats as stats
-import scipy.optimize as opt
-#import seaborn as sns
-from scipy.optimize import curve_fit
-from scipy import interpolate
-#sns.set()
 
 
 

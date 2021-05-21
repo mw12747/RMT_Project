@@ -18,57 +18,140 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="py" value="3" />
-          <entry key="txt" value="10" />
+          <entry key="py" value="13" />
+          <entry key="txt" value="13" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="PLAIN_TEXT" value="10" />
-          <entry key="Python" value="3" />
+          <entry key="PLAIN_TEXT" value="13" />
+          <entry key="Python" value="13" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="Python Console" value="446" />
-          <entry key="py" value="839" />
+          <entry key="Python Console" value="684" />
+          <entry key="py" value="2472" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="1285" />
+          <entry key="Python" value="3156" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/RunSims.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="723">
-              <caret line="112" column="18" selection-start-line="112" selection-start-column="18" selection-end-line="112" selection-end-column="18" />
-              <folding>
-                <element signature="e#0#85#0" expanded="true" />
-                <element signature="e#2707#2727#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/SimulatedData/Plot_Sims.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="600">
-              <caret line="40" column="47" selection-start-line="40" selection-start-column="47" selection-end-line="40" selection-end-column="47" />
-              <folding>
-                <element signature="e#0#11#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.5">
+      <split-first>
+        <leaf>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/RunSims.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="908">
+                  <caret line="109" column="12" lean-forward="true" selection-start-line="109" selection-start-column="12" selection-end-line="111" selection-end-column="42" />
+                  <folding>
+                    <element signature="e#0#85#0" expanded="true" />
+                    <element signature="e#2707#2727#0" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/Test.py">
+              <provider selected="true" editor-type-id="text-editor" />
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/Stats.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state>
+                  <folding>
+                    <element signature="e#0#19#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/RMTstats.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="-1590">
+                  <caret line="20" column="7" selection-start-line="20" selection-start-column="7" selection-end-line="20" selection-end-column="7" />
+                  <folding>
+                    <element signature="e#695#3371#0" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/SimulatedData/Plot_Sims.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="555">
+                  <caret line="37" column="53" selection-start-line="37" selection-start-column="53" selection-end-line="37" selection-end-column="53" />
+                  <folding>
+                    <element signature="e#0#11#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/RMTstats_georgie.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="37">
+                  <caret line="185" selection-start-line="185" selection-end-line="185" selection-end-column="121" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/NearestNeighbours.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="524">
+                  <caret line="67" column="93" selection-start-line="67" selection-start-column="93" selection-end-line="67" selection-end-column="93" />
+                  <folding>
+                    <element signature="e#0#11#0" expanded="true" />
+                    <marker date="1621607901231" expanded="true" signature="862:1079" ph="..." />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/RunSimulations_Soft.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="-344">
+                  <folding>
+                    <element signature="e#0#97#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/SimulatedData/HardRGG/Dim_1/rate_1000.0/eta_inf.txt">
+              <provider selected="true" editor-type-id="LargeFileEditor" />
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/RMTstats_georgie.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="-408">
+                  <caret line="185" selection-start-line="185" selection-end-line="185" selection-end-column="121" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -92,8 +175,10 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Run_Sims.py" />
-        <option value="$PROJECT_DIR$/SimulatedData/Plot_Sims.py" />
+        <option value="$PROJECT_DIR$/RMTstats.py" />
+        <option value="$PROJECT_DIR$/NearestNeighbours.py" />
         <option value="$PROJECT_DIR$/RunSims.py" />
+        <option value="$PROJECT_DIR$/SimulatedData/Plot_Sims.py" />
       </list>
     </option>
   </component>
@@ -127,7 +212,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -146,7 +231,28 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.RunSims">
+  <component name="RunManager" selected="Python.NearestNeighbours">
+    <configuration name="NearestNeighbours" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="RMT_Project" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/NearestNeighbours.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="Plot_Sims" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="RMT_Project" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -192,11 +298,13 @@
     <list>
       <item itemvalue="Python.RunSims" />
       <item itemvalue="Python.Plot_Sims" />
+      <item itemvalue="Python.NearestNeighbours" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.RunSims" />
+        <item itemvalue="Python.NearestNeighbours" />
         <item itemvalue="Python.Plot_Sims" />
+        <item itemvalue="Python.RunSims" />
       </list>
     </recent_temporary>
   </component>
@@ -218,16 +326,16 @@
     <editor active="true" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24970461" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24970461" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Version Control" sideWeight="0.49980307" weight="0.329927" />
-      <window_info anchor="bottom" id="Python Console" sideWeight="0.49940923" weight="0.329927" />
+      <window_info anchor="bottom" id="Python Console" sideWeight="0.49665222" visible="true" weight="0.329927" />
       <window_info anchor="bottom" id="Terminal" />
-      <window_info anchor="bottom" id="Event Log" sideWeight="0.5013785" side_tool="true" visible="true" weight="0.329927" />
+      <window_info anchor="bottom" id="Event Log" sideWeight="0.50334775" side_tool="true" visible="true" weight="0.329927" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4986215" visible="true" weight="0.329927" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49625838" weight="0.20656934" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49980307" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -250,12 +358,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SimulatedData/SoftRGG/Dim_1/rate_1000.0/eta_1.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SimulatedData/HardRGG/Dim_1/rate_1000.0/eta_inf.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/SimulatedData/SoftRGG/Dim_1/rate_30/eta_1.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -273,10 +375,72 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/SimulatedData/SoftRGG/Dim_1/rate_1000.0/eta_1.txt">
+      <provider editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="LargeFileEditor">
+        <state relative-caret-position="-3487" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SimulatedData/HardRGG/Dim_1/rate_1000.0/eta_inf.txt">
+      <provider editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="LargeFileEditor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RMTstats_georgie.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="37">
+          <caret line="185" selection-start-line="185" selection-end-line="185" selection-end-column="121" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RMTstats.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1590">
+          <caret line="20" column="7" selection-start-line="20" selection-start-column="7" selection-end-line="20" selection-end-column="7" />
+          <folding>
+            <element signature="e#695#3371#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Test.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/demo.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Stats.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RunSimulations_Soft.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-344">
+          <folding>
+            <element signature="e#0#97#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/NearestNeighbours.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="524">
+          <caret line="67" column="93" selection-start-line="67" selection-start-column="93" selection-end-line="67" selection-end-column="93" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+            <marker date="1621607901231" expanded="true" signature="862:1079" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/SimulatedData/Plot_Sims.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="40" column="47" selection-start-line="40" selection-start-column="47" selection-end-line="40" selection-end-column="47" />
+        <state relative-caret-position="555">
+          <caret line="37" column="53" selection-start-line="37" selection-start-column="53" selection-end-line="37" selection-end-column="53" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>
@@ -285,8 +449,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/RunSims.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="723">
-          <caret line="112" column="18" selection-start-line="112" selection-start-column="18" selection-end-line="112" selection-end-column="18" />
+        <state relative-caret-position="908">
+          <caret line="109" column="12" lean-forward="true" selection-start-line="109" selection-start-column="12" selection-end-line="111" selection-end-column="42" />
           <folding>
             <element signature="e#0#85#0" expanded="true" />
             <element signature="e#2707#2727#0" />
