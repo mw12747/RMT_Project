@@ -46,11 +46,14 @@ def plot_sims(hard, dim, rate, mean_degree, eta=2):
         eig = eig + data[key][i]
     print(len(eig))
 
-    plt.hist(eig, bins=bins, density=True, label=f'mean degree = {mean_degree}')
-    if hard:
-        plt.title(f'Hard RGG for d = {dim}, rate = {rate}')
-    else:
-        plt.title(f'Soft RGG for d = {dim}, rate = {rate}, $\eta$ = {eta}')
+    plt.hist(eig, bins=len(eig), density=False, cumulative=True, label='CDF',
+             histtype='step', alpha=0.8, color='k')
+
+    # plt.hist(eig, bins=bins, density=True, label=f'mean degree = {mean_degree}')
+    # if hard:
+    #     plt.title(f'Hard RGG for d = {dim}, rate = {rate}')
+    # else:
+    #     plt.title(f'Soft RGG for d = {dim}, rate = {rate}, $\eta$ = {eta}')
 
 
     plt.legend()
@@ -58,8 +61,8 @@ def plot_sims(hard, dim, rate, mean_degree, eta=2):
 
 
 rate = 1e3
-mean_degree = 4
+mean_degree = 10
 
-# plot_sims(hard=True, dim=1, rate=rate, mean_degree=mean_degree, eta=1)
+plot_sims(hard=True, dim=1, rate=rate, mean_degree=mean_degree, eta=1)
 # plot_sims(hard=False, dim=1, rate=rate, mean_degree=mean_degree, eta=2)
-plot_sims(hard=False, dim=1, rate=rate, mean_degree=mean_degree, eta=1)
+# plot_sims(hard=False, dim=1, rate=rate, mean_degree=mean_degree, eta=1)
