@@ -30,44 +30,82 @@ def data_import(hard, dim, rate, mean_degree, eta=2):
 
 
 def mean_degree2rad(mean_degree, hard, rate, eta=2):
-    if hard == True:
-        rad = mean_degree / (2 * rate)
-    else:
-        if eta == 1:
+    if dim == 1:
+        if hard == True:
             rad = mean_degree / (2 * rate)
         else:
-            rad = mean_degree / (rate * sqrt(pi))
+            if eta == 1:
+                rad = mean_degree / (2 * rate)
+            elif eta == 2:
+                rad = mean_degree / (rate * sqrt(pi))
+    elif dim == 2:
+        if hard == True:
+            rad = sqrt(mean_degree / (pi * rate))
+        else:
+            if eta == 1:
+                rad = sqrt(mean_degree / (2 * pi * rate))
+            elif eta == 2:
+                rad = sqrt(mean_degree / (pi * rate))
     return rad
 
+def rad2mean_degree(rad, hard, rate, dim, eta=2):
+    if dim == 1:
+        if hard:
+            mean_degree = 2 * rate * rad
+        else:
+            if eta == 1:
+                mean_degree = 2 * rate * rad
+            elif eta == 2:
+                mean_degree = rate * sqrt(pi) * rad
+    elif dim == 2:
+        if hard:
+            mean_degree = pi * rate * rad ** 2
+        else:
+            if eta == 1:
+                mean_degree = 2 * pi * rate * rad ** 2
+            elif eta == 2:
+                mean_degree = pi * rate * rad ** 2
+    return mean_degree
+
 #
-def NNSD_temp(data, mean_degree, hard, rate, eta=2):
+def NNSD(data, mean_degree, hard, rate, eta=2):
     rad = str(mean_degree2rad(mean_degree, hard, rate, eta))
     list_len = len(data[rad])
     dat_temp = [sorted(data[rad][i]) for i in range(list_len)]
     NN = []
+    unfold_list = []
     sum = 0
+
     for i in range(list_len):
         len_sub_list = len(dat_temp[i])
         sum += len_sub_list
-        unfold = sp.interpolate.interp1d(dat_temp[i], np.linspace(1.0, rate, len_sub_list), bounds_error=False,
+        unfold = sp.interpolate.interp1d(dat_temp[i], np.linspace(1.0, len_sub_list, len_sub_list), bounds_error=False,
                                          fill_value=np.nan)
         dat = sorted(unfold(dat_temp[i]))
+
+        y = 1000.0 * (np.arange(1, len_sub_list + 1) / len_sub_list)
+
+        plt.step(dat_temp[i], y, color='red')
+
+        plt.show()
+
+        unfold_list.append(dat)
         if i == 40:
             print("NNSD_temp = ",dat)
         # print(dat)
         for x in range(len_sub_list - 1):
             NN.append(dat[x + 1] - dat[x])
     # print(NN)
-    return NN
+    return NN, unfold_list
 
-def NNSD(data, mean_degree, hard, rate, eta=2):
-    rad = str(mean_degree2rad(mean_degree, hard, rate, eta))
-    list_len = len(data[rad])
-    dat = [sorted(data[rad][i]) for i in range(list_len)]
-    print("NNSD = ",dat[40])
-    NN = [dat[i][x + 1] - dat[i][x] for i in range(list_len) for x in range(len(dat[i]) - 1)]
-    # print(sorted(NN)[0:1000])
-    return NN
+# def NNSD(data, mean_degree, hard, rate, eta=2):
+#     rad = str(mean_degree2rad(mean_degree, hard, rate, eta))
+#     list_len = len(data[rad])
+#     dat = [sorted(data[rad][i]) for i in range(list_len)]
+#     print("NNSD = ",dat[40])
+#     NN = [dat[i][x + 1] - dat[i][x] for i in range(list_len) for x in range(len(dat[i]) - 1)]
+#     # print(sorted(NN)[0:1000])
+#     return NN
 
 def nNNSD(data, mean_degree, hard, rate, eta=2):
     rad = str(mean_degree2rad(mean_degree, hard, rate, eta))
@@ -85,14 +123,18 @@ def nNNSD(data, mean_degree, hard, rate, eta=2):
 # print(unfold)
 
 hard = True
-dim = 1
+dim = 2
 rate = 1e3
-mean_degree = 8
+mean_degree = 125
 
-data = data_import(hard=hard, dim=dim, rate=rate, mean_degree=mean_degree)
+# data = data_import(hard=hard, dim=dim, rate=rate, mean_degree=mean_degree)
+#
+# NN, unfold_list = NNSD(data, mean_degree, hard, rate)
 
-NN = NNSD(data, mean_degree, hard, rate)
-NN_temp = NNSD_temp(data, mean_degree, hard, rate)
+data = data_import(hard=False, dim=dim, rate=rate, mean_degree=mean_degree, eta=1)
+
+NN, unfold_list = NNSD(data, mean_degree, hard, rate, eta=1)
+# NN_temp = NNSD_temp(data, mean_degree, hard, rate)
 
 # print(NN[3])
 # nNN = nNNSD(data, mean_degree, hard, rate)
@@ -109,3 +151,5 @@ NN_temp = NNSD_temp(data, mean_degree, hard, rate)
 # plt.hist(nNN, bins=bins)
 #
 # plt.show()
+
+
